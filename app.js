@@ -1,1 +1,0 @@
-const textInput = document.querySelector("input");
