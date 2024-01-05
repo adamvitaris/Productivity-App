@@ -74,7 +74,17 @@ body {
     border-radius: 5px;
 }
 
-ul li {
+ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul > li {
+    display: flex;
+    flex-direction: column; /* Ez állítja be az elemek elrendezését egymás alá */
+  }
+
+ul > li > input + label {
     list-style: none;
     font-size: 18px;
     padding: 12px 8px 12px 30px;
@@ -83,9 +93,33 @@ ul li {
     color: #000;
     display: flex;
     align-items: center;
-}
-
-span {
+  }
+  
+  span {
     padding-right: 10px;
     color: #176B87;
-}
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  label {
+    position: relative;
+  }
+  
+  label:before {
+    content: '\e835'; 
+    font-family: 'Material Symbols Outlined';
+    display: inline-block;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  input[type="checkbox"]:checked + label:before {
+    content: '\e834'; 
+    color: #176B87;
+  }
