@@ -74,52 +74,21 @@ body {
     border-radius: 5px;
 }
 
-ul {
+#list-container {
     padding: 0;
-    margin: 0;
-  }
-  
-  ul > li {
-    display: flex;
-    flex-direction: column; /* Ez állítja be az elemek elrendezését egymás alá */
+    margin: 10px;
   }
 
-ul > li > input + label {
-    list-style: none;
-    font-size: 18px;
-    padding: 12px 8px 12px 30px;
-    user-select: none;
-    cursor: pointer;
-    color: #000;
-    display: flex;
-    align-items: center;
-  }
-  
-  span {
-    padding-right: 10px;
-    color: #176B87;
-  }
-  
-  input[type="checkbox"] {
-    display: none;
-  }
-  
-  label {
-    position: relative;
-  }
-  
-  label:before {
-    content: '\e835'; 
-    font-family: 'Material Symbols Outlined';
-    display: inline-block;
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  
-  input[type="checkbox"]:checked + label:before {
-    content: '\e834'; 
-    color: #176B87;
-  }
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-text {
+  cursor: pointer;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
