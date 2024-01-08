@@ -4,6 +4,11 @@ const listContainer = document.getElementById("list-container");
 let currentId = 0;
 
 addBtn.addEventListener("click", addTask);
+document.addEventListener("keydown", function (e){
+if (e.key === "Enter") {
+    addTask();
+}
+});
 
 function addTask() {
     if (textInput.value === "") {
@@ -38,6 +43,10 @@ function addTask() {
         label && checkbox.addEventListener("click", function () {
             label.classList.toggle("toggle-line");
         });
+
+        trashBtn.addEventListener("click", function() {
+            newTaskContainer.remove();
+        })
     }
 }
 
