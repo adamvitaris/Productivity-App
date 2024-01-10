@@ -9,12 +9,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Nunito:wght@300&family=Poppins:wght@200&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chrono.css">
 </head>
 <body>
     <div class="container">
-        
-    </div> 
+        <nav class="navbar">
+            <a href="todo-list.html" class="check"><i class="fa-solid fa-square-check"></i></a>
+            <a href="chrono.html" class="clock"><i class="fa-solid fa-stopwatch"></i></a>
+            <a href="#" class="stat"><i class="fa-solid fa-chart-simple"></i></a>
+        </nav>
+        <div class="timer-container">
+            <div class="form-container">
+            <select class="form-control" id="hours"></select>
+            <script>
+                const hourSelect = document.getElementById("hours");
+                for (let i = 0; i < 13; i++) {
+                    const option = document.createElement("option");
+                    option.textContent = i;
+                    hourSelect.appendChild(option);
+                }
+            </script>
+            <select class="form-control" id="minutes"></select>
+            <script>
+                const minuteSelect = document.getElementById("minutes");
+                for (let i = 0; i < 60; i++) {
+                    const option = document.createElement("option");
+                    option.textContent = i;
+                    minuteSelect.appendChild(option);
+                }
+            </script>
+            </div>
+            <!--<input type="text" placeholder="Please set the time"> -->
+            <button id="add-btn">Add</button>
+    </div>
     <script src="chrono.js"></script>
 </body>
 </html>

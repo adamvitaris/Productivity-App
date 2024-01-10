@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #EEF5FF, #B4D4FF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 150px;
+    width: 600px;
+    margin-top: -300px;
+    /*border: 2px solid black;*/
+}
+
+.navbar a i {
+    font-size: 35px; 
+    color: #176B87;
+    padding: 10px;
+}
+
+.timer-container {
+    background-color: #86B6F6;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset;
+}
+
+.timer-container input {
+    font-size: 18px;
+    font-weight: bold;
+    width: 50%;
+    padding: 6px 6px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+}
+
+.timer-container input:focus {
+    border: 1px solid #176B87;
+    border-radius: 5px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Todo-list input style copy */
+
+.form-control {
+    width: 60px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+#add-btn {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #176B87;
+    color: #ccc;
+    width: 70px;
+    padding: 6px 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#add-btn:hover {
+    background-color: #EEF5FF;
+    color: #176B87;
+    border: 1px solid #176B87;
+    border-radius: 5px;
+}
+
