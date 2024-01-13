@@ -18,29 +18,19 @@
             <a href="chrono.html" class="clock"><i class="fa-solid fa-stopwatch"></i></a>
             <a href="#" class="stat"><i class="fa-solid fa-chart-simple"></i></a>
         </nav>
+        <!--MAIN CONTENT-->
         <div class="timer-container">
             <div class="form-container">
-            <select class="form-control" id="hours"></select>
-            <script>
-                const hourSelect = document.getElementById("hours");
-                for (let i = 0; i < 13; i++) {
-                    const option = document.createElement("option");
-                    option.textContent = i;
-                    hourSelect.appendChild(option);
-                }
-            </script>
-            <select class="form-control" id="minutes"></select>
-            <script>
-                const minuteSelect = document.getElementById("minutes");
-                for (let i = 0; i < 60; i++) {
-                    const option = document.createElement("option");
-                    option.textContent = i;
-                    minuteSelect.appendChild(option);
-                }
-            </script>
+                <input class="form-control" placeholder="Hours" type="number" min=0 name="hours"><p>h</p>
+                <input class="form-control" placeholder="Minutes" type="number" min=0 name="minutes"><p>m</p>
             </div>
-            <!--<input type="text" placeholder="Please set the time"> -->
-            <button id="add-btn">Add</button>
+            <button class="btn" id="add-btn">Start</button>
+        </div>
+        <div class="counter-container">
+            <h2>00</h2>
+            <h2>:</h2>
+            <h2>00</h2>
+        </div>
     </div>
     <script src="chrono.js"></script>
 </body>
