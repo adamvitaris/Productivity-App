@@ -99,8 +99,20 @@ p {
 }
 
 h2 {
-    font-size: 70px;
-    margin-top: 50px;
+    font-size: 80px;
+    margin-top: 10px;
     color: #176B87;
 }
 
+h3 {
+    text-align: center;
+    color: #176B87;
+    font-size: 30px;
+}
+
+.btn-control {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
