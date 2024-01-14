@@ -12,14 +12,22 @@ menuCont.style.display = "none";
 
 document.addEventListener("keydown", function (e){
     if (e.key === "Enter") {
-        if (hourInp.value !== 0
-        && minuteInp.value !== 0
-        && textInp.value.length !== 0)
-         toggleMenu();
+        if (hourInp.value !== "0"
+        && minuteInp.value !== "0"
+        && textInp.value !== "") {
+            toggleMenu();
         }
-    });
+    }
+});
 
-btnStart.addEventListener("click", toggleMenu);
+
+btnStart.addEventListener("click", function() {
+    if (hourInp.value !== "0"
+    && minuteInp.value !== "0"
+    && textInp.value !== "") {
+        toggleMenu();
+    }
+});
 
 function toggleMenu() {
     hourValue = (0 + hourInp.value).slice(-2);
