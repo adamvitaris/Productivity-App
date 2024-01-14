@@ -22,11 +22,10 @@ document.addEventListener("keydown", function (e){
 btnStart.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
-    hourValue = hourInp.value;
-    minuteValue = minuteInp.value;
+    hourValue = (0 + hourInp.value).slice(-2);
+    minuteValue = (0 + minuteInp.value).slice(-2);
     textValue = textInp.value;
 
-    // Put some zeros before the time setting.
     // Make the countdown.
     // BUG - Limit the characters of the Task input!
     menuCont.style.display = "block";
