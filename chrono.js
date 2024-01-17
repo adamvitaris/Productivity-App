@@ -12,19 +12,18 @@ menuCont.style.display = "none";
 
 document.addEventListener("keydown", function (e){
     if (e.key === "Enter") {
-        if (hourInp.value !== "0"
-        && minuteInp.value !== "0"
-        && textInp.value !== "") {
+        if (hourInp.value !== ""
+        && minuteInp.value !== "") {
             toggleMenu();
+            console.log(textInp.value.length);
         }
     }
 });
 
 
 btnStart.addEventListener("click", function() {
-    if (hourInp.value !== "0"
-    && minuteInp.value !== "0"
-    && textInp.value !== "") {
+    if (hourInp.value !== ""
+    && minuteInp.value !== "") {
         toggleMenu();
     }
 });
