@@ -15,7 +15,6 @@ document.addEventListener("keydown", function (e){
         if (hourInp.value !== ""
         || minuteInp.value !== "") {
             toggleMenu();
-            timeCounter();
         }
     }
 });
@@ -28,34 +27,26 @@ btnStart.addEventListener("click", function() {
     }
 });
 
-function toggleMenu() {
-    hourValue = (0 + hourInp.value).slice(-2);
-    minuteValue = (0 + minuteInp.value).slice(-2);
-    textValue = textInp.value;
-
-    // Make the countdown.
-    // BUG - Limit the characters of the Task input!
-    menuCont.style.display = "block";
-    hourDisplay.innerHTML = hourValue;
-    minuteDisplay.innerHTML = minuteValue;
-    textDisplay.innerHTML = textValue;
-}
-
 countHour = 0;
 countMinute = 0;
 counterFlag = true;
 
-function timeCounter() {
+function toggleMenu() {
+    hourValue = (0 + hourInp.value).slice(-2);
+    minuteValue = (0 + minuteInp.value).slice(-2);
+    textValue = textInp.value;
+    menuCont.style.display = "block";
+    hourDisplay.innerHTML = hourValue;
+    minuteDisplay.innerHTML = minuteValue;
+    textDisplay.innerHTML = textValue;
+
     countHour = Number(hourInp.value) * 60;
     countMinute = Number(minuteInp.value);
     alles = countHour + countMinute;
-    while (counterFlag) {
-        alles--;
-        if (countHour % 60 < 1) {
-            countMinute--;
-            if (countMinute === 0) {
-                counterFlag = false;
-            }
+    for (countHour % 60 < 1) {
+        countHour--;
+        if (countHour % 60 === 0) {
+
         }
     }
 }
