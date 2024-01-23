@@ -13,9 +13,9 @@ menuCont.style.display = "none";
 document.addEventListener("keydown", function (e){
     if (e.key === "Enter") {
         if (hourInp.value !== ""
-        && minuteInp.value !== "") {
+        || minuteInp.value !== "") {
             toggleMenu();
-            console.log(textInp.value.length);
+            timeCounter();
         }
     }
 });
@@ -39,4 +39,23 @@ function toggleMenu() {
     hourDisplay.innerHTML = hourValue;
     minuteDisplay.innerHTML = minuteValue;
     textDisplay.innerHTML = textValue;
+}
+
+countHour = 0;
+countMinute = 0;
+counterFlag = true;
+
+function timeCounter() {
+    countHour = Number(hourInp.value) * 60;
+    countMinute = Number(minuteInp.value);
+    alles = countHour + countMinute;
+    while (counterFlag) {
+        alles--;
+        if (countHour % 60 < 1) {
+            countMinute--;
+            if (countMinute === 0) {
+                counterFlag = false;
+            }
+        }
+    }
 }
