@@ -1,13 +1,13 @@
-hourInp = document.querySelector("#hours");
-minuteInp = document.querySelector("#minutes");
-textInp = document.querySelector("#text");
-btnStart = document.querySelector("#start-btn");
+let hourInp = document.querySelector("#hours");
+let minuteInp = document.querySelector("#minutes");
+let textInp = document.querySelector("#text");
+let btnStart = document.querySelector("#start-btn");
 
-hourDisplay = document.querySelector("#hourDisplay");
-minuteDisplay = document.querySelector("#minuteDisplay");
-textDisplay = document.querySelector(".current-task");
+let hourDisplay = document.querySelector("#hourDisplay");
+let minuteDisplay = document.querySelector("#minuteDisplay");
+let textDisplay = document.querySelector(".current-task");
 
-menuCont = document.querySelector(".menu-container");
+let menuCont = document.querySelector(".menu-container");
 menuCont.style.display = "none";
 
 document.addEventListener("keydown", function (e){
@@ -15,6 +15,7 @@ document.addEventListener("keydown", function (e){
         if (hourInp.value !== ""
         || minuteInp.value !== "") {
             toggleMenu();
+            timeCounter();
         }
     }
 });
@@ -27,26 +28,17 @@ btnStart.addEventListener("click", function() {
     }
 });
 
-countHour = 0;
-countMinute = 0;
-counterFlag = true;
-
 function toggleMenu() {
-    hourValue = (0 + hourInp.value).slice(-2);
-    minuteValue = (0 + minuteInp.value).slice(-2);
-    textValue = textInp.value;
+    let hourValue = (0 + hourInp.value).slice(-2);
+    let minuteValue = (0 + minuteInp.value).slice(-2);
+    let textValue = textInp.value;
     menuCont.style.display = "block";
     hourDisplay.innerHTML = hourValue;
     minuteDisplay.innerHTML = minuteValue;
     textDisplay.innerHTML = textValue;
-
-    countHour = Number(hourInp.value) * 60;
-    countMinute = Number(minuteInp.value);
-    alles = countHour + countMinute;
-    for (countHour % 60 < 1) {
-        countHour--;
-        if (countHour % 60 === 0) {
-
-        }
-    }
 }
+
+function timeCounter() {
+    let totalSeconds = (hourValue * 3600) + (minuteValue * 60);
+    return totalSeconds;
+    }
