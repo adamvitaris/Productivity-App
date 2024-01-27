@@ -1,6 +1,3 @@
-let hourInp = document.querySelector("#hours");
-let minuteInp = document.querySelector("#minutes");
-let textInp = document.querySelector("#text");
 let btnStart = document.querySelector("#start-btn");
 
 let hourDisplay = document.querySelector("#hourDisplay");
@@ -11,10 +8,12 @@ let menuCont = document.querySelector(".menu-container");
 menuCont.style.display = "none";
 
 document.addEventListener("keydown", function (e){
+    let hourInp = parseInt(document.querySelector("#hours").value);
+    let minuteInp = parseInt(document.querySelector("#minutes").value);
+    let textInp = document.querySelector("#text").value;
     if (e.key === "Enter") {
-        if (hourInp.value !== ""
-        || minuteInp.value !== "") {
-            toggleMenu();
+        if (!isNaN(hourInp) && !isNaN(minuteInp)) {
+            toggleMenu(hourInp, minuteInp, textInp);
             timeCounter();
         }
     }
@@ -22,23 +21,27 @@ document.addEventListener("keydown", function (e){
 
 
 btnStart.addEventListener("click", function() {
-    if (hourInp.value !== ""
-    && minuteInp.value !== "") {
-        toggleMenu();
+    let hourInp = parseInt(document.querySelector("#hours").value);
+    let minuteInp = parseInt(document.querySelector("#minutes").value);
+    let textInp = document.querySelector("#text").value;
+    if (!isNaN(hourInp) && !isNaN(minuteInp)) {
+        toggleMenu(hourInp, minuteInp, textInp);
+        timeCounter();
     }
 });
 
-function toggleMenu() {
-    let hourValue = (0 + hourInp.value).slice(-2);
-    let minuteValue = (0 + minuteInp.value).slice(-2);
-    let textValue = textInp.value;
+function toggleMenu(hour, minute, text) {
+    let hourValue = hour.toString().padStart(2, '0');
+    let minuteValue = minute.toString().padStart(2, '0');
     menuCont.style.display = "block";
     hourDisplay.innerHTML = hourValue;
     minuteDisplay.innerHTML = minuteValue;
-    textDisplay.innerHTML = textValue;
+    textDisplay.innerHTML = text;
 }
 
 function timeCounter() {
-    let totalSeconds = (hourValue * 3600) + (minuteValue * 60);
-    return totalSeconds;
+    let hourInp = parseInt(document.querySelector("#hours").value);
+    let minuteInp = parseInt(document.querySelector("#minutes").value);
+    let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
+    console.log(totalSeconds);
     }
