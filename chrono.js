@@ -28,7 +28,7 @@ btnStart.addEventListener("click", function() {
     }
 });
 
-let currentInterval = null;
+
 
 function timeCounter() {
     let hourInp = parseInt(document.querySelector("#hours").value);
@@ -39,28 +39,19 @@ function timeCounter() {
 
     let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
 
-    // Ha már fut egy visszaszámláló, állítsuk le azt először
-    if (currentInterval) {
-        clearInterval(currentInterval);
-    }
-
-    currentInterval = setInterval(function() {
+    let interval = setInterval(function() {
         let hour = Math.floor(totalSeconds / 3600);
         let minute = Math.floor((totalSeconds % 3600) / 60);
 
         hourDisplay.textContent = String(hour).padStart(2, '0');
         minuteDisplay.textContent = String(minute).padStart(2, '0');
-
+        
         if (totalSeconds <= 0) {
-            clearInterval(currentInterval);
-            hourDisplay.textContent = "00";
-            minuteDisplay.textContent = "00";
-            // Itt további logikát adhatsz hozzá, ha az idő lejárta után valamit tenni szeretnél
+            clearInterval(interval);
         }
-
         totalSeconds--;
     }, 1000);
-}
+    }
 
     function toggleMenu(hour, minute, text) {
         let hourValue = hour.toString().padStart(2, '0');
