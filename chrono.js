@@ -1,5 +1,8 @@
 let btnEnter = document.querySelector("#enter-btn");
 
+let hourInp = parseInt(document.querySelector("#hours").value);
+let minuteInp = parseInt(document.querySelector("#minutes").value);
+
 let hourDisplay = document.querySelector("#hourDisplay");
 let minuteDisplay = document.querySelector("#minuteDisplay");
 let textDisplay = document.querySelector(".current-task");
@@ -14,6 +17,7 @@ document.addEventListener("keydown", function (e){
     if (e.key === "Enter") {
         if (!isNaN(hourInp) && !isNaN(minuteInp)) {
             toggleMenu(hourInp, minuteInp, textInp);
+            start();
         }
     }
 });
@@ -28,37 +32,41 @@ btnEnter.addEventListener("click", function() {
     }
 });
 
+let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
+let interval = 0;
 
+function toggleMenu(hour, minute, text) {
+    let hourValue = hour.toString().padStart(2, '0');
+    let minuteValue = minute.toString().padStart(2, '0');
 
-function timeCounter() {
+    menuCont.style.display = "block";
+    hourDisplay.innerHTML = hourValue;
+    minuteDisplay.innerHTML = minuteValue;
+    textDisplay.innerHTML = text;
+}
+
+function updateTime() {
     let hourInp = parseInt(document.querySelector("#hours").value);
     let minuteInp = parseInt(document.querySelector("#minutes").value);
-    let textInp = document.querySelector("#text").value;
-
     
+    let hour = Math.floor(totalSeconds / 3600);
+    let minute = Math.floor((totalSeconds % 3600) / 60);
 
-    let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
-
-    let interval = setInterval(function() {
-        let hour = Math.floor(totalSeconds / 3600);
-        let minute = Math.floor((totalSeconds % 3600) / 60);
-
-        hourDisplay.textContent = String(hour).padStart(2, '0');
-        minuteDisplay.textContent = String(minute).padStart(2, '0');
-        
-        if (totalSeconds <= 0) {
-            clearInterval(interval);
-        }
-        totalSeconds--;
-    }, 1000);
+    hourDisplay.textContent = String(hour).padStart(2, '0');
+    minuteDisplay.textContent = String(minute).padStart(2, '0');
     }
 
-    function toggleMenu(hour, minute, text) {
-        let hourValue = hour.toString().padStart(2, '0');
-        let minuteValue = minute.toString().padStart(2, '0');
+    function start() {
+        if (totalSeconds === 0) return;
 
-        menuCont.style.display = "block";
-        hourDisplay.innerHTML = hourValue;
-        minuteDisplay.innerHTML = minuteValue;
-        textDisplay.innerHTML = text;
+        let interval = setInterval(() => {
+            totalSeconds--;
+            updateTime();
+
+            if (totalSeconds === 0) {
+                clearInterval(interval);
+
+                interval = null;
+            }
+        }, 1000);
     }
