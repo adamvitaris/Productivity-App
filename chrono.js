@@ -1,4 +1,4 @@
-let btnStart = document.querySelector("#start-btn");
+let btnEnter = document.querySelector("#enter-btn");
 
 let hourDisplay = document.querySelector("#hourDisplay");
 let minuteDisplay = document.querySelector("#minuteDisplay");
@@ -13,18 +13,18 @@ document.addEventListener("keydown", function (e){
     let textInp = document.querySelector("#text").value;
     if (e.key === "Enter") {
         if (!isNaN(hourInp) && !isNaN(minuteInp)) {
-            timeCounter();
+            toggleMenu(hourInp, minuteInp, textInp);
         }
     }
 });
 
 
-btnStart.addEventListener("click", function() {
+btnEnter.addEventListener("click", function() {
     let hourInp = parseInt(document.querySelector("#hours").value);
     let minuteInp = parseInt(document.querySelector("#minutes").value);
     let textInp = document.querySelector("#text").value;
     if (!isNaN(hourInp) && !isNaN(minuteInp)) {
-        timeCounter();
+        toggleMenu(hourInp, minuteInp, textInp);
     }
 });
 
@@ -35,7 +35,7 @@ function timeCounter() {
     let minuteInp = parseInt(document.querySelector("#minutes").value);
     let textInp = document.querySelector("#text").value;
 
-    toggleMenu(hourInp, minuteInp, textInp);
+    
 
     let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
 
