@@ -16,13 +16,11 @@ document.addEventListener("keydown", function (e){
     let minuteInp = parseInt(minute.value);
     let textInp = text.value;
     if (e.key === "Enter") {
-        let totalSeconds = (hourInp * 3600) + (minuteInp * 60);
-        if (!isNaN(hourInp) && !isNaN(minuteInp)) {
             toggleMenu(hourInp, minuteInp, textInp);
             start(totalSeconds);
         }
     }
-});
+);
 
 
 btnEnter.addEventListener("click", function() {
@@ -36,6 +34,7 @@ btnEnter.addEventListener("click", function() {
     }
 });
 
+//---------------------------------------------
 function toggleMenu(hour, minute, text) {
     let hourValue = hour.toString().padStart(2, '0');
     let minuteValue = minute.toString().padStart(2, '0');
@@ -48,9 +47,18 @@ function toggleMenu(hour, minute, text) {
 
 //----------------------------------------------
 let interval = null;
-    
+
+function updateInputs(totalSeconds) {
+    const minuteUpdate = Math.floor((totalSeconds % 3600) / 60);
+    const hourUpdate = Math.floor(totalSeconds / 3600);
+
+    minute.value = minuteUpdate;
+    hour.value = hourUpdate;
+}
 
 function start(totalSeconds) {
+    let hour = document.querySelector("#hours");
+    let minute = document.querySelector("#minutes");
     interval = setInterval(() => {
         totalSeconds--;
         updateInputs(totalSeconds);
@@ -60,12 +68,3 @@ function start(totalSeconds) {
         }
     }, 1000)
 }
-
-function updateInputs(totalSeconds) {
-    const minuteUpdate = Math.floor(totalSeconds / 60);
-    const hourUpdate = Math.floor(totalSeconds / 60 / 60);
-
-    minute.value = minuteUpdate;
-    hour.value = hourUpdate;
-}
-    
