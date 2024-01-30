@@ -53,28 +53,17 @@ function toggleMenu(hour, minute, text) {
 let interval = null;
 
 function updateInputs() {
-    console.log(totalSeconds);
     let hourUpdate = Math.floor(totalSeconds / 3600);
     let minuteUpdate = Math.floor((totalSeconds % 3600) / 60);
-    totalSeconds--;
-
-    hourUpdate = hour.toString().padStart(2, '0');
-    minuteUpdate = minute.toString().padStart(2, '0');
-
-    hourDisplay.innerHTML = hourUpdate;
-    minuteDisplay.innerHTML = minuteUpdate;
-
-    console.log(minuteUpdate);
-    console.log(hourUpdate);
-
+    
 }
 
-function start() {
+function start(totalSeconds) {
     let hour = document.querySelector("#hours");
     let minute = document.querySelector("#minutes");
     interval = setInterval(() => {
+        totalSeconds--;
         updateInputs();
-
         if (totalSeconds <= 0) {
             interval = clearInterval(interval);
         }
