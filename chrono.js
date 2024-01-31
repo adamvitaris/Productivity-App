@@ -55,7 +55,13 @@ let interval = null;
 function updateInputs() {
     let hourUpdate = Math.floor(totalSeconds / 3600);
     let minuteUpdate = Math.floor((totalSeconds % 3600) / 60);
-    
+
+    let hourValue = hourUpdate.toString().padStart(2, '0');
+    let minuteValue = minuteUpdate.toString().padStart(2, '0');
+
+    menuCont.style.display = "block";
+    hourDisplay.innerHTML = hourValue;
+    minuteDisplay.innerHTML = minuteValue;
 }
 
 function start(totalSeconds) {
@@ -64,6 +70,8 @@ function start(totalSeconds) {
     interval = setInterval(() => {
         totalSeconds--;
         updateInputs();
+        console.log(totalSeconds);
+
         if (totalSeconds <= 0) {
             interval = clearInterval(interval);
         }
