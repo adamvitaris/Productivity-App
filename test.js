@@ -1,6 +1,3 @@
-
-
-
 let num = 0;
 function countUp() {
 let myInterval = setInterval(()=> {
